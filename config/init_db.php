@@ -17,17 +17,17 @@ foreach ($queries as $query) {
 echo "Database tables created successfully!\n";
 
 // Insert some sample data
-$sampleQueries = [
-    "INSERT INTO users (username, email, password_hash) VALUES 
-    ('admin', 'admin@example.com', '" . password_hash('admin123', PASSWORD_DEFAULT) . "')",
-];
+// $sampleQueries = [
+//     "INSERT INTO users (username, email, password_hash) VALUES 
+//     ('admin', 'admin@example.com', '" . password_hash('admin123', PASSWORD_DEFAULT) . "')",
+// ];
 
-foreach ($sampleQueries as $query) {
-    if (!mysqli_query($conn, $query)) {
-        echo "Error inserting sample data: " . mysqli_error($conn) . "\n";
-    }
-}
+// foreach ($sampleQueries as $query) {
+//     if (!mysqli_query($conn, $query)) {
+//         echo "Error inserting sample data: " . mysqli_error($conn) . "\n";
+//     }
+// }
 
-echo "Sample data inserted successfully!\n";
+// echo "Sample data inserted successfully!\n";
 mysqli_close($conn);
 ?>
