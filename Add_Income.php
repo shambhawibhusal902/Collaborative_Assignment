@@ -402,15 +402,15 @@
     <div class="sidebar" id="sidebar">
         <div class="logo">Expenzo</div>
         <div class="user-profile">
-            <div class="avatar" onclick="window.location.href='Profile_Page.html'" style="cursor: pointer;">S</div>
-            <div class="user-name" onclick="window.location.href='Profile_Page.html'" style="cursor: pointer;">Sam</div>
+            <div class="avatar" onclick="window.location.href='Profile.php'" style="cursor: pointer;">S</div>
+            <div class="user-name" onclick="window.location.href='Profile.php'" style="cursor: pointer;">Sam</div>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item" onclick="window.location.href='Total_Expense.html'" style="cursor: pointer;">
+            <li class="nav-item" onclick="window.location.href='Total_Expense.php'" style="cursor: pointer;">
                 <span class="nav-icon">📊</span>
                 Dashboard
             </li>
-            <li class="nav-item" onclick="window.location.href='Add_Expense_Page.html'" style="cursor: pointer;">
+            <li class="nav-item" onclick="window.location.href='Add_Expense.php'" style="cursor: pointer;">
                 <span class="nav-icon">💸</span>
                 Expense
             </li>
@@ -418,11 +418,11 @@
                 <span class="nav-icon">💰</span>
                 Income
             </li>
-            <li class="nav-item" onclick="window.location.href='Budgets_Page.html'" style="cursor: pointer;">
+            <li class="nav-item" onclick="window.location.href='Budgets.php'" style="cursor: pointer;">
                 <span class="nav-icon">💹</span>
                 Budgets
             </li>
-            <li class="nav-item" onclick="window.location.href='View_Transactions_Page.html'" style="cursor: pointer;">
+            <li class="nav-item" onclick="window.location.href='View_Transactions.php'" style="cursor: pointer;">
                 <span class="nav-icon">📋</span>
                 View Transactions
             </li>
@@ -805,7 +805,7 @@
             // window.location.href = page;
 
             // For now, just update active class
-            if (page !== 'Add_Income_Page.html') {
+            if (page !== 'Add_Income_Page.php') {
                 document.querySelectorAll('.nav-item').forEach(item => {
                     item.classList.remove('active');
                     if (item.textContent.trim().includes(page.split('_')[0].trim())) {

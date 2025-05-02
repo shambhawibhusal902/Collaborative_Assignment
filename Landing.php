@@ -411,8 +411,8 @@
         <header>
             <div class="logo">Expenzo</div>
             <div class="header-buttons">
-                <a href="Login_Page.html" class="sign-in">SIGN IN</a>
-                <a href="SignUp_Page.html" class="get-started-btn">GET STARTED</a>
+                <a href="Login.php" class="sign-in">SIGN IN</a>
+                <a href="SignUp.php" class="get-started-btn">GET STARTED</a>
             </div>
         </header>
         <div class="main-layout">
@@ -439,7 +439,7 @@
                 <div class="email-signup">
                     <div class="email-input">
                         <input type="email" id="emailInput" placeholder="What's your email?">
-                        <button onclick="window.location.href='SignUp_Page.html'" style="cursor: pointer;">
+                        <button onclick="window.location.href='SignUp.php'" style="cursor: pointer;">
                             GET STARTED
                         </button>
                     </div>
@@ -502,7 +502,7 @@
 
             if (emailPattern.test(emailInput)) {
                 // Redirect to signup form with email as query parameter
-                window.location.href = `SignUp_Page.html?email=${encodeURIComponent(emailInput)}`;
+                window.location.href = `SignUp.php?email=${encodeURIComponent(emailInput)}`;
             } else {
                 alert('Please enter a valid email address.');
             }

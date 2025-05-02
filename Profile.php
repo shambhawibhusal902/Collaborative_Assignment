@@ -443,23 +443,23 @@
             <div class="user-name">Sam</div>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item" onclick="window.location.href='Total_Expense.html'" style="cursor: pointer;">
+            <li class="nav-item" onclick="window.location.href='Total_Expense.php'" style="cursor: pointer;">
                 <span class="nav-icon">📊</span>
                 Dashboard
             </li>
-            <li class="nav-item" onclick="window.location.href='Add_Expense_Page.html'" style="cursor: pointer;">
+            <li class="nav-item" onclick="window.location.href='Add_Expense.php'" style="cursor: pointer;">
                 <span class="nav-icon">💸</span>
                 Expense
             </li>
-            <li class="nav-item" onclick="window.location.href='Add_Income_Page.html'" style="cursor: pointer;">
+            <li class="nav-item" onclick="window.location.href='Add_Income.php'" style="cursor: pointer;">
                 <span class="nav-icon">💰</span>
                 Income
             </li>
-            <li class="nav-item" onclick="window.location.href='Budgets_Page.html'" style="cursor: pointer;">
+            <li class="nav-item" onclick="window.location.href='Budgets.php'" style="cursor: pointer;">
                 <span class="nav-icon">💹</span>
                 Budgets
             </li>
-            <li class="nav-item" onclick="window.location.href='View_Transactions_Page.html'" style="cursor: pointer;">
+            <li class="nav-item" onclick="window.location.href='View_Transactions.php'" style="cursor: pointer;">
                 <span class="nav-icon">📋</span>
                 View Transactions
             </li>

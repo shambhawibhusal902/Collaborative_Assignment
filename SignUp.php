@@ -168,13 +168,13 @@
 
         <!-- Already have an account? Link -->
         <div class="login-link">
-            Already have an account? <a href="Login_Page.html">Sign in</a>
+            Already have an account? <a href="Login.php">Sign in</a>
         </div>
     </div>
 
     <script>
         function goBack() {
-            window.location.href = 'index.html';
+            window.location.href = 'index.php';
         }
 
         // Extract email from query parameter and pre-fill the email field

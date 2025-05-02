@@ -114,7 +114,7 @@
 </head>
 
 <body>
-    <button class="back-button" onclick="window.location.href='Landing_Page.html'">
+    <button class="back-button" onclick="window.location.href='Landing.php'">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 12H5M12 19l-7-7 7-7" />
@@ -136,15 +136,15 @@
                 <input type="password" id="password" required>
             </div>
 
-            <button type="submit" class="sign-in-button" onclick="window.location.href='Total_Expense.html'"
+            <button type="submit" class="sign-in-button" onclick="window.location.href='Total_Expense.php'"
                 style="cursor: pointer;">Sign in</button>
         </form>
 
         <!-- Forgot Password Link -->
-        <a href="forgot-password.html" class="forgot-password-link">Forgot Password?</a>
+        <a href="forgot-password.php" class="forgot-password-link">Forgot Password?</a>
 
         <div class="sign-up-container">
-            Don't have an account yet? <a href="SignUp_Page.html" class="sign-up-link">Sign up</a>
+            Don't have an account yet? <a href="SignUp.php" class="sign-up-link">Sign up</a>
         </div>
     </div>
 
