@@ -1,175 +1,105 @@
+<?php
+session_start();
+
+// Debugging: Check if db_config.php exists
+if (file_exists('db_config.php')) {
+    echo "db_config.php found!<br>";
+} else {
+    die("db_config.php not found!");
+}
+
+// Debugging: Display current directory and files
+echo "Current directory: " . getcwd() . "<br>";
+echo "Files in directory: " . print_r(glob("*.*"), true);
+
+require 'db_config.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $stmt = $conn->prepare("SELECT id, password FROM users WHERE email = ?");
+    if ($stmt === false) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            echo "<p>Login successful!</p>";
+        } else {
+            echo "<p>Invalid password.</p>";
+        }
+    } else {
+        echo "<p>No user found with that email.</p>";
+    }
+
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In Page</title>
+    <title>Login</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
         body {
-            background-color: #f9f9f7;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            position: relative;
+            margin: 0;
         }
-
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .back-button svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .container {
-            background-color: white;
-            width: 400px;
-            padding: 40px;
-            border-radius: 4px;
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
-
-        .title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
+        h2 {
+            margin-top: 0;
             text-align: center;
         }
-
-        .subtitle {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-
         input {
             width: 100%;
             padding: 10px;
+            margin: 10px 0;
             border: 1px solid #ddd;
-            border-radius: 2px;
-            font-size: 14px;
+            border-radius: 5px;
+            box-sizing: border-box;
         }
-
-        .sign-in-button {
+        button {
             width: 100%;
-            padding: 12px;
-            background-color: #000;
-            color: white;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
             border: none;
-            border-radius: 2px;
-            font-size: 14px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .forgot-password-link {
-            display: block;
-            margin-top: 10px;
-            text-align: right;
-            font-size: 14px;
-            color: #000;
-            text-decoration: underline;
+            border-radius: 5px;
             cursor: pointer;
         }
-
-        .sign-up-container {
-            margin-top: 15px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .sign-up-link {
-            color: #000;
-            text-decoration: underline;
-            font-weight: bold;
-            cursor: pointer;
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
-
 <body>
-    <button class="back-button" onclick="window.location.href='Landing.php'">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-    </button>
-
-    <div class="container">
-        <div class="title">SIGN IN</div>
-        <div class="subtitle">Enter your email below to login to your account</div>
-
-        <form id="signInForm">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" required>
-            </div>
-
-            <button type="submit" class="sign-in-button" onclick="window.location.href='Total_Expense.php'"
-                style="cursor: pointer;">Sign in</button>
-        </form>
-
-        <!-- Forgot Password Link -->
-        <a href="forgot-password.php" class="forgot-password-link">Forgot Password?</a>
-
-        <div class="sign-up-container">
-            Don't have an account yet? <a href="SignUp.php" class="sign-up-link">Sign up</a>
-        </div>
-    </div>
-
-    <script>
-        function goBack() {
-            // In a real application, this would navigate back
-            alert("Back button clicked");
-        }
-
-        function redirectToSignUp() {
-            // In a real application, this would redirect to sign up page
-            alert("Redirecting to sign up page");
-        }
-
-        document.getElementById("signInForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            // In a real application, this would send the data to a server
-            console.log("Sign in attempt with:", { email, password });
-            alert(`Sign in attempt with email: ${email}`);
-        });
-    </script>
+    <form action="Login.php" method="post">
+        <h2>Login</h2>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
 </body>
-
 </html>
