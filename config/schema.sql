@@ -29,8 +29,9 @@ CREATE TABLE IF NOT EXISTS budgets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     category VARCHAR(50),
-    amount DECIMAL(10,2),
-    month VARCHAR(20),
+    amount DECIMAL(10,2) NOT NULL,
+    description TEXT,
+    date DATE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
@@ -49,7 +50,7 @@ VALUES
 (1, 100.50, 'Groceries', 'Weekly groceries', '2025-04-03'),
 (2, 75.00, 'Transport', 'Bus and train tickets', '2025-04-04');
 
-INSERT INTO budgets (user_id, category, amount, month)
+INSERT INTO budgets (user_id, category, amount, description, date)
 VALUES 
-(1, 'Groceries', 400.00, 'April 2025'),
-(2, 'Transport', 150.00, 'April 2025');
+(1, 'Groceries', 400.00, 'Vegetables', '2025-04-03'),
+(2, 'Transport', 150.00, 'bus', '2025-04-04');
